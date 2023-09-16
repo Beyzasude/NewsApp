@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21513" systemVersion="22G91" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="FavoriteNewsModel" representedClassName="FavoriteNewsModel" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="news_author" optional="YES" attributeType="String"/>
+        <attribute name="news_content" optional="YES" attributeType="String"/>
+        <attribute name="news_description" optional="YES" attributeType="String"/>
+        <attribute name="news_image" optional="YES" attributeType="String"/>
+        <attribute name="news_source" optional="YES" attributeType="String"/>
+        <attribute name="news_title" optional="YES" attributeType="String"/>
+        <attribute name="news_url" optional="YES" attributeType="String"/>
+    </entity>
+</model>

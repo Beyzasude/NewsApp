@@ -11,9 +11,18 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+
     }
 
-
+    @IBAction func signInButtonAct(_ sender: Any) {
+        performSegue(withIdentifier:"signIn", sender: nil)
+    }
+    
+    
+    
+    @IBAction func signUpButtonAct(_ sender: Any) {
+        performSegue(withIdentifier:"signUp", sender: nil)
+    }
+    
 }
 

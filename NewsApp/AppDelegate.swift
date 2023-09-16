@@ -6,14 +6,43 @@
 //
 
 import UIKit
+import FirebaseCore
+import CoreData
+
+let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-
+    
+    var window: UIWindow?
+    
+    // coredata veritabanı erişimi
+    lazy var persistentContainer: NSPersistentContainer = {
+        let container = NSPersistentContainer(name: "NewsModel")
+        
+        container.loadPersistentStores(completionHandler: { description, error in
+            if let e = error {
+                print(e.localizedDescription)
+            }
+        })
+        return container
+    }()
+    
+    //veritabanı değişikliklerini kaydetmek için
+    func saveContext(){
+        let context = persistentContainer.viewContext
+        if context.hasChanges{
+            do{
+                try context.save()
+            }catch{
+                print(error.localizedDescription)
+            }
+        }
+    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        FirebaseApp.configure()
         return true
     }
 
