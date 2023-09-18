@@ -84,6 +84,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "trengingNewsCell", for: indexPath) as! TrendingNewsCollectionViewCell
             cell.titleLabel.text = trendNewsList[indexPath.row].title
             cell.sourceLabel.text = trendNewsList[indexPath.row].source?.name
+            cell.publishTimeLabel.text = Utilities.publishDateFormat(publishedAt: trendNewsList[indexPath.row].publishedAt) 
             cell.imageView.kf.setImage(with: URL(string: trendNewsList[indexPath.row].urlToImage ?? "https://images.unsplash.com/photo-1585829365295-ab7cd400c167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80"))
             cell.imageView.layer.cornerRadius = 12
             return cell

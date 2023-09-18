@@ -112,28 +112,34 @@
                                                                 <constraint firstAttribute="height" constant="110" id="uHH-js-KdI"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="S3P-qR-BUj">
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="S3P-qR-BUj">
                                                             <rect key="frame" x="0.0" y="118" width="197" height="52"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="40T-rm-K5v">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="197" height="21"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="40T-rm-K5v">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="197" height="17.333333333333332"/>
+                                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EMv-T6-nUH">
+                                                                    <rect key="frame" x="0.0" y="17.333333333333343" width="197" height="17.333333333333329"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="sc6-BJ-Gk5">
-                                                                    <rect key="frame" x="0.0" y="31" width="197" height="21"/>
+                                                                    <rect key="frame" x="0.0" y="34.666666666666657" width="197" height="17.333333333333329"/>
                                                                     <subviews>
                                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="Bxf-d4-aFC">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="26" height="21"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="26" height="17.333333333333332"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="width" constant="26" id="SRg-4R-7jh"/>
                                                                                 <constraint firstAttribute="height" constant="26" id="vdh-dU-5vN"/>
                                                                             </constraints>
                                                                         </imageView>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qgl-kk-8op">
-                                                                            <rect key="frame" x="31" y="0.0" width="166" height="21"/>
-                                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                            <rect key="frame" x="31" y="0.0" width="166" height="17.333333333333332"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
@@ -164,20 +170,21 @@
                                         <size key="customSize" width="217" height="180"/>
                                         <connections>
                                             <outlet property="imageView" destination="ePa-zJ-Rw3" id="SKH-ll-DUu"/>
-                                            <outlet property="sourceLabel" destination="qgl-kk-8op" id="wKq-zP-J1i"/>
+                                            <outlet property="publishTimeLabel" destination="EMv-T6-nUH" id="qOp-bx-I0R"/>
+                                            <outlet property="sourceLabel" destination="qgl-kk-8op" id="mKQ-QT-Xd6"/>
                                             <outlet property="titleLabel" destination="40T-rm-K5v" id="tTt-tc-kmq"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lastest News" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zw7-VL-lPK">
-                                <rect key="frame" x="20" y="589" width="153" height="30"/>
+                                <rect key="frame" x="20" y="604" width="153" height="30"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ewM-hV-giE">
-                                <rect key="frame" x="20" y="624" width="353" height="120"/>
+                                <rect key="frame" x="20" y="639" width="353" height="120"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="120" id="6Bx-EV-XZp"/>
@@ -257,7 +264,7 @@
                             <constraint firstItem="3lp-bJ-cI5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="hol-gW-FfI"/>
                             <constraint firstItem="WFZ-0B-VMY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="lnw-I5-12q"/>
                             <constraint firstItem="gkJ-fk-wI9" firstAttribute="top" secondItem="WFZ-0B-VMY" secondAttribute="bottom" constant="5" id="oT2-s2-hzD"/>
-                            <constraint firstItem="Zw7-VL-lPK" firstAttribute="top" secondItem="gkJ-fk-wI9" secondAttribute="bottom" constant="5" id="t2s-4b-3c2"/>
+                            <constraint firstItem="Zw7-VL-lPK" firstAttribute="top" secondItem="gkJ-fk-wI9" secondAttribute="bottom" constant="20" id="t2s-4b-3c2"/>
                             <constraint firstItem="Zw7-VL-lPK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="wUF-ES-5gb"/>
                             <constraint firstItem="O1o-XJ-FY0" firstAttribute="top" secondItem="3lp-bJ-cI5" secondAttribute="bottom" constant="10" id="xA2-4I-VYo"/>
                         </constraints>
@@ -460,7 +467,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="mQB-B1-HID">
-                                <rect key="frame" x="0.0" y="163.33333333333334" width="393" height="56"/>
+                                <rect key="frame" x="0.0" y="155" width="393" height="56"/>
                                 <color key="tintColor" systemColor="tintColor"/>
                                 <color key="barTintColor" systemColor="systemBackgroundColor"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -537,7 +544,7 @@
                             <constraint firstItem="mQB-B1-HID" firstAttribute="trailing" secondItem="Dix-LE-U33" secondAttribute="trailing" id="xfe-S4-6q7"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Search" largeTitleDisplayMode="always" id="AHZ-Nh-Ebc"/>
+                    <navigationItem key="navigationItem" title="Search" id="AHZ-Nh-Ebc"/>
                     <connections>
                         <outlet property="searchBar" destination="mQB-B1-HID" id="ZeR-pA-YY9"/>
                         <outlet property="tableView" destination="nkB-Z6-j67" id="B9U-9x-i2g"/>
@@ -1324,7 +1331,7 @@
                     <tabBarItem key="tabBarItem" title="Explore" image="magnifyingglass" catalog="system" id="vLf-Q5-WGe"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="rLl-c2-05q">
-                        <rect key="frame" x="0.0" y="59" width="393" height="104.33333333333334"/>
+                        <rect key="frame" x="0.0" y="59" width="393" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" systemColor="systemRedColor"/>
                     </navigationBar>
@@ -1344,7 +1351,7 @@
                     <tabBarItem key="tabBarItem" title="Saved" image="bookmark.fill" catalog="system" selectedImage="bookmark.fill" id="fJ6-e7-A3g"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="3b4-QR-PNH">
-                        <rect key="frame" x="0.0" y="59" width="393" height="104.33333333333334"/>
+                        <rect key="frame" x="0.0" y="59" width="393" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" systemColor="systemRedColor"/>
                     </navigationBar>

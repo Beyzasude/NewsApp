@@ -43,6 +43,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
+        if let userInterfaceStyle = UserDefaults.standard.string(forKey: "userInterfaceStyle") {
+            if userInterfaceStyle == "dark" {
+                window?.overrideUserInterfaceStyle = .dark
+            } else {
+                window?.overrideUserInterfaceStyle = .light
+            }
+        }
         return true
     }
 

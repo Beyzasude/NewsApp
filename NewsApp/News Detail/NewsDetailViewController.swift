@@ -30,7 +30,7 @@ class NewsDetailViewController: UIViewController {
        
         setData()
         fetchFavNews()
-        publishDateFormat()
+        dateStringFormat = Utilities.publishDateFormat(publishedAt: newsResponseModel?.publishedAt)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -48,23 +48,23 @@ class NewsDetailViewController: UIViewController {
         newsContentLabel.text = newsResponseModel?.content ?? "The United Autoworkers Union (UAW) will go through with threats to strike against the Big Three automakers — Ford, General Motors and Stellantis — after both sides failed to reach a deal. This is the… [+8631 chars]"
     }
     
-    func publishDateFormat(){
-        //gelen tarihi formatlama
-        let dateString = newsResponseModel?.publishedAt ?? ""
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-        
-        if let date = dateFormatter.date(from: dateString) {
-            dateFormatter.dateFormat = "MMMM dd, yyyy"
-            dateFormatter.locale = Locale(identifier: "en_US")
-            let formattedDate = dateFormatter.string(from: date)
-            print(formattedDate)
-            dateStringFormat = formattedDate
-            publishTimeLabel.text = dateStringFormat
-        } else {
-            print("Invalid date format.")
-        }
-    }
+//    func publishDateFormat(){
+//        //gelen tarihi formatlama
+//        let dateString = newsResponseModel?.publishedAt ?? ""
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+//
+//        if let date = dateFormatter.date(from: dateString) {
+//            dateFormatter.dateFormat = "MMMM dd, yyyy"
+//            dateFormatter.locale = Locale(identifier: "en_US")
+//            let formattedDate = dateFormatter.string(from: date)
+//            print(formattedDate)
+//            dateStringFormat = formattedDate
+//            publishTimeLabel.text = dateStringFormat
+//        } else {
+//            print("Invalid date format.")
+//        }
+//    }
     
     func saveFavNews(){
         let context = appDelegate.persistentContainer.viewContext

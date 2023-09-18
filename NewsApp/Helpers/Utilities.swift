@@ -32,6 +32,25 @@ class Utilities {
         viewController.present(alert, animated: true, completion: nil)
     }
     
+    static func publishDateFormat(publishedAt: String?) -> String {
+        //gelen tarihi formatlama
+        var dateStringFormat = ""
+        let dateString = publishedAt ?? ""
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        
+        if let date = dateFormatter.date(from: dateString) {
+            dateFormatter.dateFormat = "MMMM dd, yyyy"
+            dateFormatter.locale = Locale(identifier: "en_US")
+            let formattedDate = dateFormatter.string(from: date)
+            print(formattedDate)
+            dateStringFormat = formattedDate
+            //publishTimeLabel.text = dateStringFormat
+            return dateStringFormat
+        } 
+        return "Invalid date format."
+    }
+    
     static func isPasswordValid(_ password : String) -> Bool {
         let passwordTest = NSPredicate(format: "SELF MATCHES %@", "^(?=.*[a-z])(?=.*[$@$#!%*?&])[A-Za-z\\d$@$#!%*?&]{8,}")
         return passwordTest.evaluate(with: password)

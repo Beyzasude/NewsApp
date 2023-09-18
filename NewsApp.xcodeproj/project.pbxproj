@@ -52,6 +52,7 @@
 		230899992AB47AC9001332CE /* NewsDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230899982AB47AC9001332CE /* NewsDetailViewModel.swift */; };
 		2308999B2AB48672001332CE /* DetailWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2308999A2AB48672001332CE /* DetailWebViewController.swift */; };
 		2308999E2AB4BEB9001332CE /* FavoriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2308999D2AB4BEB9001332CE /* FavoriteTableViewCell.swift */; };
+		23537EE12AB87C36004D5E66 /* SideMenu in Frameworks */ = {isa = PBXBuildFile; productRef = 23537EE02AB87C36004D5E66 /* SideMenu */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -108,6 +109,7 @@
 				2308996F2AAF8910001332CE /* FirebaseCrashlytics in Frameworks */,
 				2308998E2AB32F5D001332CE /* Kingfisher in Frameworks */,
 				2308995B2AACF6A8001332CE /* FirebaseFirestoreSwift in Frameworks */,
+				23537EE12AB87C36004D5E66 /* SideMenu in Frameworks */,
 				2308996D2AAF8906001332CE /* FirebaseRemoteConfig in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -337,6 +339,7 @@
 				2308996E2AAF8910001332CE /* FirebaseCrashlytics */,
 				2308997F2AB199FC001332CE /* Alamofire */,
 				2308998D2AB32F5D001332CE /* Kingfisher */,
+				23537EE02AB87C36004D5E66 /* SideMenu */,
 			);
 			productName = NewsApp;
 			productReference = 2308991D2AAC79B4001332CE /* NewsApp.app */;
@@ -370,6 +373,7 @@
 				2308994F2AACF6A8001332CE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				2308997E2AB199FC001332CE /* XCRemoteSwiftPackageReference "Alamofire" */,
 				2308998C2AB32F5D001332CE /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				23537EDF2AB87C36004D5E66 /* XCRemoteSwiftPackageReference "SideMenu" */,
 			);
 			productRefGroup = 2308991E2AAC79B4001332CE /* Products */;
 			projectDirPath = "";
@@ -670,6 +674,14 @@
 				minimumVersion = 7.0.0;
 			};
 		};
+		23537EDF2AB87C36004D5E66 /* XCRemoteSwiftPackageReference "SideMenu" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kukushi/SideMenu.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -727,6 +739,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2308998C2AB32F5D001332CE /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		23537EE02AB87C36004D5E66 /* SideMenu */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 23537EDF2AB87C36004D5E66 /* XCRemoteSwiftPackageReference "SideMenu" */;
+			productName = SideMenu;
 		};
 /* End XCSwiftPackageProductDependency section */
 
