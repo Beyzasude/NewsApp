@@ -38,7 +38,6 @@ class RegisterViewModel: RegisterViewModelProtocol {
                 print("Hata: \(error.localizedDescription)")
             } else {
                 self.view?.succesfulRegisterAlert()
-                print("Kullanıcı bilgileri Firestore veritabanına kaydedildi.")
             }
         }
     }

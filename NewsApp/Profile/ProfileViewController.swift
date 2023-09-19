@@ -11,23 +11,29 @@ import Firebase
 class ProfileViewController: UIViewController {
     
     @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var userNameLabel: UILabel!
+    @IBOutlet weak var countryLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var phoneLabel: UILabel!
+   
+    var viewModel = ProfileViewModel()
     
-    @IBOutlet weak var screenModeSwitch: UISwitch!
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel.getData(userName: userNameLabel, email: emailLabel, phone: phoneLabel, country: countryLabel)
         profileImageView.layer.masksToBounds = true
         profileImageView.layer.cornerRadius = 65
-
+        self.profileImageView.isUserInteractionEnabled = true
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(didTapChangeProfilePic))
+        self.profileImageView.addGestureRecognizer(gesture)
     }
-        
-    @IBAction func screenModeButtonAct(_ sender: UISwitch) {
-        let appDelegate = UIApplication.shared.windows.first
-        if sender.isOn {
-            appDelegate?.overrideUserInterfaceStyle = .dark
-        }
-        else{
-            appDelegate?.overrideUserInterfaceStyle = .light
-        }
+    
+    @objc private func didTapChangeProfilePic() {
+        presentPhotoActionSheet()
+    }
+    
+    @IBAction func darkLigtModeSegmentAct(_ sender: UISegmentedControl) {
+        viewModel.screenMode(sender: sender)
     }
     
     @IBAction func logoutButtonAct(_ sender: Any) {
@@ -44,7 +50,7 @@ class ProfileViewController: UIViewController {
                 strongSelf.present(vc, animated: true)
             }
             catch{
-                print("An error occurred while logging out.")
+                print(error.localizedDescription)
             }
         }))
         actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel))
@@ -53,4 +59,65 @@ class ProfileViewController: UIViewController {
 
     }
     
+    
+    
+    
 }
+
+extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func presentPhotoActionSheet() {
+        let actionSheet = UIAlertController(title: "Profil Fotoğrafı",
+                                            message: "Nasıl fotoğraf seçmek istersiniz?",
+                                            preferredStyle: .actionSheet)
+        
+        actionSheet.addAction(UIAlertAction(title: "İptal",
+                                            style: .cancel,
+                                            handler: nil))
+        
+        actionSheet.addAction(UIAlertAction(title: "Fotoğraf Çek",
+                                            style: .default,
+                                            handler: { [weak self] _ in
+            self?.presentCamera()
+            
+        }))
+        actionSheet.addAction(UIAlertAction(title: "Fotoğraf Seç",
+                                            style: .default,
+                                            handler: { [weak self] _ in
+            self?.presentPhotoPicker()
+            
+        }))
+        present(actionSheet, animated: true)
+    }
+    
+    func presentCamera() {
+        let vc = UIImagePickerController()
+        vc.sourceType = .camera
+        vc.delegate = self
+        vc.allowsEditing = true
+        present(vc, animated: true)
+    }
+    
+    func presentPhotoPicker() {
+        let vc = UIImagePickerController()
+        vc.sourceType = .photoLibrary
+        vc.delegate = self
+        vc.allowsEditing = true
+        present(vc, animated: true)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        picker.dismiss(animated: true, completion: nil)
+        
+        guard let selectedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage else{
+            return
+        }
+        self.profileImageView.image = selectedImage
+        //self.lblUploadPhoto.isHidden = true
+        
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+}
+

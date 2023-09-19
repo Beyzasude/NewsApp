@@ -12,6 +12,7 @@ enum Path {
     case fetchTopHeadLines
     case fetchTrendNews
     case fetchLastestNews
+    case fetchCategoryNews(categoryName: String)
     case search(searchText: String)
     
     var path: URL {
@@ -24,6 +25,8 @@ enum Path {
             return URL(string: "\(baseUrl)/everything?domains=wsj.com&apiKey=\(apiKey)")!
         case .search(let searchText):
             return URL(string: "\(baseUrl)/everything?q=\(searchText)&apiKey=\(apiKey)")!
+        case .fetchCategoryNews(let categoryName):
+            return URL(string: "\(baseUrl)/top-headlines?country=us&category=\(categoryName)&apiKey=\(apiKey)")!
         }
         
     }
@@ -33,14 +36,13 @@ enum Path {
     }
     
     var apiKey: String {
-        return "d515f23b8571415681adbfe10bc22673"
+        return "296053757c0443faa4183a4647e62456"
     }
 }
 
 struct Resource<T: Decodable> {
     var url: Path
 }
-
 
 final class NetworkManager {
     
@@ -62,38 +64,3 @@ final class NetworkManager {
 }
 
 
-//func sil(_ kisi_id: Int){
-//    let url = "http://kasimadalan.pe.hu/kisiler/delete_kisiler.php"
-//     let params: Parameters = ["kisi_id": kisi_id]
-//
-//     AF.request(url, method: .post, parameters: params).response { response in
-//         if let data = response.data {
-//             do {
-//                 let crudCevap = try JSONDecoder().decode(CRUDCevap.self, from: data)
-//                 print("----------- Kişi Sil-----------")
-//                 print("Başarı : \(crudCevap.success!)")
-//                 print("Message: \(crudCevap.message!)")
-//             }catch{
-//                 print(error.localizedDescription)
-//             }
-//         }
-//     }
-//}
-
-//func ara(_ aramaKelimesi: String){
-//    let url = "http://kasimadalan.pe.hu/kisiler/tum_kisiler_arama.php"
-//     let params: Parameters = ["kisi_ad": aramaKelimesi]
-//
-//    AF.request(url, method: .post, parameters: params).response { response in
-//         if let data = response.data {
-//             do {
-//                 let KisilerCevap = try JSONDecoder().decode(KisilerCevap.self, from: data)
-//                 if let liste = KisilerCevap.kisiler {
-//                     self.kisilerListesi.onNext(liste) //tetikleme
-//                 }
-//             }catch{
-//                 print(error.localizedDescription)
-//             }
-//         }
-//     }
-//}

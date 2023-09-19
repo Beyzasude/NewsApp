@@ -109,7 +109,8 @@ extension SearchViewController : UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "searchCell", for: indexPath) as! SearchTableViewCell
         cell.titleLabel.text = searchList?[indexPath.row].title
         cell.descriptionLabel.text = searchList?[indexPath.row].description
-        cell.searchImageView.kf.setImage(with: URL(string:searchList?[indexPath.row].urlToImage ?? ""), placeholder:UIImage(named:"image"))
+        cell.sourceLabel.text = searchList?[indexPath.row].source?.name
+        cell.searchImageView.kf.setImage(with: URL(string:searchList?[indexPath.row].urlToImage ?? Utilities.emptyURL), placeholder:UIImage(named:"image"))
         return cell
     }
     

@@ -12,10 +12,11 @@ class FavoriteTableViewCell: UITableViewCell {
     @IBOutlet weak var favorimageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var sourceLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        favorimageView.layer.cornerRadius = 10
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

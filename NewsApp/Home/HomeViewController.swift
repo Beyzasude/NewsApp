@@ -7,6 +7,7 @@
 
 import UIKit
 import Kingfisher
+import SideMenu
 
 class HomeViewController: UIViewController {
     
@@ -14,22 +15,25 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var trendingCollectionView: UICollectionView!
     @IBOutlet weak var lastestCollectionView: UICollectionView!
     @IBOutlet weak var pageControl: UIPageControl!
-    
     @IBOutlet weak var todayDateLabel: UILabel!
     
-
+    var menu: SideMenuNavigationController?
+    var viewModel = HomeViewModel()
+    
     var topHeadList: [Article] = []
     var trendNewsList: [Article] = []
     var lastestList: [Article] = []
     
-    var viewModel = HomeViewModel()
-
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.delegate = self
         collectionViewsSet()
         todayDate()
         pageControl.currentPage = 0
+        menu = SideMenuNavigationController(rootViewController: MenuListTableViewController())
+        menu?.leftSide = true
+        SideMenuManager.default.leftMenuNavigationController = menu
+        SideMenuManager.default.addPanGestureToPresent(toView: self.view)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -37,6 +41,7 @@ class HomeViewController: UIViewController {
         viewModel.fetchTrendNews()
         viewModel.fetchTopHeadlines()
         viewModel.fetchLastestNews()
+        
     }
     
     func collectionViewsSet() {
@@ -48,6 +53,10 @@ class HomeViewController: UIViewController {
         lastestCollectionView.dataSource = self
     }
     
+    @IBAction func sideMenuButtonAct(_ sender: Any) {
+        present(menu!, animated: true)
+        
+    }
     private func todayDate(){
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US")
@@ -76,23 +85,29 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == topHeadCollectionView {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "topHeadNewsCell", for: indexPath) as! TopHeadNewsCollectionViewCell
-            cell.imageView.kf.setImage(with: URL(string: topHeadList[indexPath.row].urlToImage!))
+            cell.imageView.kf.setImage(with: URL(string: topHeadList[indexPath.row].urlToImage ?? Utilities.emptyURL))
             cell.titleLabel.text = topHeadList[indexPath.row].title
             cell.imageView.layer.cornerRadius = 12
+            cell.layer.borderColor = UIColor.secondarySystemBackground.cgColor
+            cell.layer.cornerRadius = 10
             return cell
         }else if collectionView == trendingCollectionView {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "trengingNewsCell", for: indexPath) as! TrendingNewsCollectionViewCell
             cell.titleLabel.text = trendNewsList[indexPath.row].title
             cell.sourceLabel.text = trendNewsList[indexPath.row].source?.name
             cell.publishTimeLabel.text = Utilities.publishDateFormat(publishedAt: trendNewsList[indexPath.row].publishedAt) 
-            cell.imageView.kf.setImage(with: URL(string: trendNewsList[indexPath.row].urlToImage ?? "https://images.unsplash.com/photo-1585829365295-ab7cd400c167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80"))
+            cell.imageView.kf.setImage(with: URL(string: trendNewsList[indexPath.row].urlToImage ?? Utilities.emptyURL))
             cell.imageView.layer.cornerRadius = 12
+            cell.layer.borderColor = UIColor.secondarySystemBackground.cgColor
+            cell.layer.cornerRadius = 10
             return cell
         }else if collectionView == lastestCollectionView {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "lastestNewsCell", for: indexPath) as! LastestNewsCollectionViewCell
             cell.titleLabel.text = lastestList[indexPath.row].content
-            cell.imageView.kf.setImage(with: URL(string: lastestList[indexPath.row].urlToImage ?? "https://images.unsplash.com/photo-1585829365295-ab7cd400c167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80"))
+            cell.imageView.kf.setImage(with: URL(string: lastestList[indexPath.row].urlToImage ?? Utilities.emptyURL))
             cell.imageView.layer.cornerRadius = 12
+            cell.layer.borderColor = UIColor.secondarySystemBackground.cgColor
+            cell.layer.cornerRadius = 10
             return cell
         }
         return UICollectionViewCell()
@@ -117,7 +132,6 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
-    
 }
 
 extension HomeViewController: HomeViewModelDelegate {

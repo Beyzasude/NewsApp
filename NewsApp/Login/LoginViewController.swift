@@ -46,7 +46,6 @@ class LoginViewController: UIViewController {
                  Utilities.showCustomAlert(from: self, title:"Error", message: error?.localizedDescription ?? "Error")
              } else{
                 // self.hideActivityIndicator()
-                 print("kullanıcı oluşturulduuu")
                  //self.performSegue(withIdentifier:"home", sender: nil)
                  let vc = self.storyboard?.instantiateViewController(withIdentifier: "TabBarViewController")
                  vc!.modalPresentationStyle = .fullScreen
