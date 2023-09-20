@@ -7,7 +7,9 @@
 
 import Foundation
 import Alamofire
+import UIKit
 
+//var language = (UIApplication.shared.delegate as! AppDelegate).language
 enum Path {
     case fetchTopHeadLines
     case fetchTrendNews

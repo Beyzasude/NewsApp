@@ -15,6 +15,7 @@ let appDelegate = UIApplication.shared.delegate as! AppDelegate
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
+    var language = UserDefaults.standard.string(forKey: "language") ?? "en"
     
     // coredata veritabanı erişimi
     lazy var persistentContainer: NSPersistentContainer = {
@@ -43,6 +44,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
+        language = UserDefaults.standard.string(forKey: "language") ?? "en"
+        
         if let userInterfaceStyle = UserDefaults.standard.string(forKey: "userInterfaceStyle") {
             if userInterfaceStyle == "dark" {
                 window?.overrideUserInterfaceStyle = .dark

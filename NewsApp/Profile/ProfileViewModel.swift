@@ -63,6 +63,15 @@ class ProfileViewModel {
         }
     }
     
+    func languageMode(sender: UISegmentedControl) {
+        
+        if sender.selectedSegmentIndex == 1 {
+            UserDefaults.standard.set("tr", forKey: "language")
+        }
+        else{
+            UserDefaults.standard.set("en", forKey: "language")
+        }
+    }
     
     
 }

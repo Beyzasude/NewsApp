@@ -36,6 +36,11 @@ class ProfileViewController: UIViewController {
         viewModel.screenMode(sender: sender)
     }
     
+    @IBAction func languageModeSegmentAct(_ sender: UISegmentedControl) {
+        viewModel.languageMode(sender: sender)
+    }
+    
+    
     @IBAction func logoutButtonAct(_ sender: Any) {
         let actionSheet =  UIAlertController(title: "Are you sure you want to log out?", message: "", preferredStyle: .actionSheet)
         actionSheet.addAction(UIAlertAction(title: "Logout", style: .destructive, handler: { [weak self] _ in
