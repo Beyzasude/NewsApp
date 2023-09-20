@@ -8,8 +8,10 @@
 import UIKit
 import Kingfisher
 import SideMenu
+import JGProgressHUD
 
 class HomeViewController: UIViewController {
+    private let spinner = JGProgressHUD(style: .dark)
     
     @IBOutlet weak var topHeadCollectionView: UICollectionView!
     @IBOutlet weak var trendingCollectionView: UICollectionView!
@@ -27,9 +29,11 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.delegate = self
+        configureNavBarWithLogoImage()
         collectionViewsSet()
-        todayDate()
+        Utilities.todayDate(todayDateLabel: todayDateLabel)
         pageControl.currentPage = 0
+        
         menu = SideMenuNavigationController(rootViewController: MenuListTableViewController())
         menu?.leftSide = true
         SideMenuManager.default.leftMenuNavigationController = menu
@@ -37,11 +41,11 @@ class HomeViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        //showActivityIndicator()
+        spinner.show(in: view)
         viewModel.fetchTrendNews()
         viewModel.fetchTopHeadlines()
         viewModel.fetchLastestNews()
-        
+        spinner.dismiss()
     }
     
     func collectionViewsSet() {
@@ -55,23 +59,10 @@ class HomeViewController: UIViewController {
     
     @IBAction func sideMenuButtonAct(_ sender: Any) {
         present(menu!, animated: true)
-        
     }
-    private func todayDate(){
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "en_US")
-        dateFormatter.dateFormat = "E MMMM, yyyy"
-        let currentDate = Date()
-        let formattedDate = dateFormatter.string(from: currentDate)
-        todayDateLabel.text = formattedDate
-    }
-
 }
 
-
-extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    
-    
+extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == topHeadCollectionView {
             return topHeadList.count
@@ -95,7 +86,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "trengingNewsCell", for: indexPath) as! TrendingNewsCollectionViewCell
             cell.titleLabel.text = trendNewsList[indexPath.row].title
             cell.sourceLabel.text = trendNewsList[indexPath.row].source?.name
-            cell.publishTimeLabel.text = Utilities.publishDateFormat(publishedAt: trendNewsList[indexPath.row].publishedAt) 
+            cell.publishTimeLabel.text = Utilities.publishDateFormat(publishedAt: trendNewsList[indexPath.row].publishedAt)
             cell.imageView.kf.setImage(with: URL(string: trendNewsList[indexPath.row].urlToImage ?? Utilities.emptyURL))
             cell.imageView.layer.cornerRadius = 12
             cell.layer.borderColor = UIColor.secondarySystemBackground.cgColor
@@ -115,22 +106,19 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == topHeadCollectionView {
-            let vc = self.storyboard?.instantiateViewController(withIdentifier: "NewsDetailViewController") as! NewsDetailViewController
-            vc.newsResponseModel = topHeadList[indexPath.row]
-            vc.modalPresentationStyle = .fullScreen
-            self.navigationController?.pushViewController(vc, animated: true)
+            goDetail(list: topHeadList, indexPath: indexPath)
         }else if collectionView == trendingCollectionView {
-            let vc = self.storyboard?.instantiateViewController(withIdentifier: "NewsDetailViewController") as! NewsDetailViewController
-            vc.newsResponseModel = trendNewsList[indexPath.row]
-            vc.modalPresentationStyle = .fullScreen
-            self.navigationController?.pushViewController(vc, animated: true)
-            
+            goDetail(list: trendNewsList, indexPath: indexPath)
         }else if collectionView == lastestCollectionView {
-            let vc = self.storyboard?.instantiateViewController(withIdentifier: "NewsDetailViewController") as! NewsDetailViewController
-            vc.newsResponseModel = lastestList[indexPath.row]
-            vc.modalPresentationStyle = .fullScreen
-            self.navigationController?.pushViewController(vc, animated: true)
+            goDetail(list: lastestList, indexPath: indexPath)
         }
+    }
+    
+    func goDetail(list: [Article], indexPath: IndexPath) {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "NewsDetailViewController") as! NewsDetailViewController
+        vc.newsResponseModel = list[indexPath.row]
+        vc.modalPresentationStyle = .fullScreen
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 
@@ -145,7 +133,6 @@ extension HomeViewController: HomeViewModelDelegate {
     
     func trendNewsFetched(_ articles: [Article]) {
         trendNewsList = articles
-        //self.hideActivityIndicator()
         DispatchQueue.main.async {
             self.trendingCollectionView.reloadData()
         }
@@ -158,4 +145,3 @@ extension HomeViewController: HomeViewModelDelegate {
         }
     }
 }
-

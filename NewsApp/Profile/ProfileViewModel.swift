@@ -11,8 +11,6 @@ import UIKit
 
 class ProfileViewModel {
     func getData(userName: UILabel, email: UILabel, phone: UILabel, country:UILabel){
-       
-        //showActivityIndicator()
         let db = Firestore.firestore()
         let userDocument = db.collection("users").document()
         let userId = Auth.auth().currentUser?.uid
@@ -49,7 +47,6 @@ class ProfileViewModel {
                     }
                 }
             }
-            //self.hideActivityIndicator()
         }
     }
     
@@ -64,7 +61,6 @@ class ProfileViewModel {
     }
     
     func languageMode(sender: UISegmentedControl) {
-        
         if sender.selectedSegmentIndex == 1 {
             UserDefaults.standard.set("tr", forKey: "language")
         }
@@ -72,6 +68,4 @@ class ProfileViewModel {
             UserDefaults.standard.set("en", forKey: "language")
         }
     }
-    
-    
 }

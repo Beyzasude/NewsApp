@@ -15,7 +15,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var countryLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var phoneLabel: UILabel!
-   
+    
     var viewModel = ProfileViewModel()
     
     override func viewDidLoad() {
@@ -61,12 +61,8 @@ class ProfileViewController: UIViewController {
         actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         
         present(actionSheet, animated: true)
-
+        
     }
-    
-    
-    
-    
 }
 
 extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -117,8 +113,6 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
             return
         }
         self.profileImageView.image = selectedImage
-        //self.lblUploadPhoto.isHidden = true
-        
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {

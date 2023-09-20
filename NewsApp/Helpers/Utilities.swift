@@ -52,6 +52,15 @@ class Utilities {
         return "Invalid date format."
     }
     
+    static func todayDate(todayDateLabel: UILabel){
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US")
+        dateFormatter.dateFormat = "E MMMM, yyyy"
+        let currentDate = Date()
+        let formattedDate = dateFormatter.string(from: currentDate)
+        todayDateLabel.text = formattedDate
+    }
+    
     static func isPasswordValid(_ password : String) -> Bool {
         let passwordTest = NSPredicate(format: "SELF MATCHES %@", "^(?=.*[a-z])(?=.*[$@$#!%*?&])[A-Za-z\\d$@$#!%*?&]{8,}")
         return passwordTest.evaluate(with: password)
@@ -64,6 +73,37 @@ class Utilities {
         let emailPredicate = NSPredicate(format: "SELF MATCHES %@", emailRegex)
         return emailPredicate.evaluate(with: email)
     }
-    
-    
 }
+
+extension UIViewController {
+    func configureNavBarWithLogoImage() {
+        var image = UIImage(named: "logo")
+        
+        if let originalImage = UIImage(named: "logo")?.withRenderingMode(.alwaysOriginal) {
+            let newWidth: CGFloat = 30
+            let newHeight: CGFloat = 30
+            
+            if let resizedImage = resizeImage(image: originalImage, newWidth: newWidth, newHeight: newHeight) {
+                image = resizedImage.withRenderingMode(.alwaysOriginal)
+            }
+        }
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: image, style: .done, target: self, action: nil)
+    }
+    
+    private func resizeImage(image: UIImage, newWidth: CGFloat, newHeight: CGFloat) -> UIImage? {
+        let newSize = CGSize(width: newWidth, height: newHeight)
+        
+        UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0)
+        image.draw(in: CGRect(origin: .zero, size: newSize))
+        
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return newImage
+    }
+}
+
+
+
+
+

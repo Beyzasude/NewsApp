@@ -55,6 +55,8 @@
 		23537EEF2AB88B1A004D5E66 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23537EEE2AB88B1A004D5E66 /* CategoriesViewController.swift */; };
 		23537EF72AB8E404004D5E66 /* CategoriesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23537EF62AB8E404004D5E66 /* CategoriesCollectionViewCell.swift */; };
 		23537EF92AB99C89004D5E66 /* CategoriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23537EF82AB99C89004D5E66 /* CategoriesViewModel.swift */; };
+		23537EFC2ABAE9E0004D5E66 /* JGProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 23537EFB2ABAE9E0004D5E66 /* JGProgressHUD */; };
+		23537EFE2ABB1E13004D5E66 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23537EFD2ABB1E13004D5E66 /* SearchViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -96,6 +98,7 @@
 		23537EEE2AB88B1A004D5E66 /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		23537EF62AB8E404004D5E66 /* CategoriesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesCollectionViewCell.swift; sourceTree = "<group>"; };
 		23537EF82AB99C89004D5E66 /* CategoriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewModel.swift; sourceTree = "<group>"; };
+		23537EFD2ABB1E13004D5E66 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +107,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				230899552AACF6A8001332CE /* FirebaseDatabase in Frameworks */,
+				23537EFC2ABAE9E0004D5E66 /* JGProgressHUD in Frameworks */,
 				230899572AACF6A8001332CE /* FirebaseFirestore in Frameworks */,
 				230899512AACF6A8001332CE /* FirebaseAuth in Frameworks */,
 				230899592AACF6A8001332CE /* FirebaseFirestoreCombine-Community in Frameworks */,
@@ -240,6 +244,7 @@
 			children = (
 				230899922AB39208001332CE /* Cell */,
 				230899722AAFA3C0001332CE /* SearchViewController.swift */,
+				23537EFD2ABB1E13004D5E66 /* SearchViewModel.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -362,6 +367,7 @@
 				2308997F2AB199FC001332CE /* Alamofire */,
 				2308998D2AB32F5D001332CE /* Kingfisher */,
 				23537EE92AB885EE004D5E66 /* SideMenu */,
+				23537EFB2ABAE9E0004D5E66 /* JGProgressHUD */,
 			);
 			productName = NewsApp;
 			productReference = 2308991D2AAC79B4001332CE /* NewsApp.app */;
@@ -396,6 +402,7 @@
 				2308997E2AB199FC001332CE /* XCRemoteSwiftPackageReference "Alamofire" */,
 				2308998C2AB32F5D001332CE /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				23537EE82AB885EE004D5E66 /* XCRemoteSwiftPackageReference "SideMenu" */,
+				23537EFA2ABAE9E0004D5E66 /* XCRemoteSwiftPackageReference "JGProgressHUD" */,
 			);
 			productRefGroup = 2308991E2AAC79B4001332CE /* Products */;
 			projectDirPath = "";
@@ -425,6 +432,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23537EFE2ABB1E13004D5E66 /* SearchViewModel.swift in Sources */,
 				230899992AB47AC9001332CE /* NewsDetailViewModel.swift in Sources */,
 				2308997A2AB180BB001332CE /* NetworkManager.swift in Sources */,
 				2308999B2AB48672001332CE /* DetailWebViewController.swift in Sources */,
@@ -706,6 +714,14 @@
 				kind = branch;
 			};
 		};
+		23537EFA2ABAE9E0004D5E66 /* XCRemoteSwiftPackageReference "JGProgressHUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/JonasGessner/JGProgressHUD.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -768,6 +784,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 23537EE82AB885EE004D5E66 /* XCRemoteSwiftPackageReference "SideMenu" */;
 			productName = SideMenu;
+		};
+		23537EFB2ABAE9E0004D5E66 /* JGProgressHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 23537EFA2ABAE9E0004D5E66 /* XCRemoteSwiftPackageReference "JGProgressHUD" */;
+			productName = JGProgressHUD;
 		};
 /* End XCSwiftPackageProductDependency section */
 

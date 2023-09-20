@@ -8,25 +8,26 @@
 import UIKit
 
 class SearchViewController: UIViewController {
-    
-    
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     
     let searchController = UISearchController(searchResultsController: nil)
+    var viewModel = SearchViewModel()
     var searchList : [Article]?
     let label = UILabel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel.delegate = self
         labelSet()
         tableViewSet()
-        //searchBar.barTintColor = UIColor.systemBackground
+        configureNavBarWithLogoImage()
         searchBar.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        fetchSearchList()
+        viewModel.fetchSearchList(searchText: "business")
+        self.tableView.reloadData()
     }
     
     func labelSet() {
@@ -48,55 +49,23 @@ class SearchViewController: UIViewController {
         tableView.dataSource = self
         tableView.reloadData()
     }
-    
-    func fetchSearchList() {
-        let resource = Resource<NewsModel>(url: .search(searchText: "business"))
-        NetworkManager.shared.fetchData(resource: resource) { response in
-            self.searchList = response.articles
-           // self.hideActivityIndicator()
-            self.tableView.reloadData()
-        }
-    }
 }
-
-extension SearchViewController : UISearchBarDelegate  {
-
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        // Arama işlemini gerçekleştirin
-        if let searchText = searchBar.text, !searchText.isEmpty {
-            //showActivityIndicator()
-            let resource = Resource<NewsModel>(url: .search(searchText: searchText))
-            NetworkManager.shared.fetchData(resource: resource) { response in
-                self.searchList = response.articles
-                //self.hideActivityIndicator()
-                self.tableView.reloadData()
-            }
-        }
-        searchBar.resignFirstResponder()
-    }
-    
-    
+extension SearchViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
-        if let searchText = searchBar.text, !searchText.isEmpty {
-            //showActivityIndicator()
-            let resource = Resource<NewsModel>(url: .search(searchText: searchText))
-            NetworkManager.shared.fetchData(resource: resource) { response in
-                self.searchList = response.articles
-                //self.hideActivityIndicator()
-                if self.searchList?.count == 0 {
-                    
-                    self.tableView.isHidden = true
-                    self.label.isHidden = false
-                }else{
-                    self.tableView.isHidden = false
-                    self.label.isHidden = true
-                    
-                }
-                self.tableView.reloadData()
+        if searchText == "" {
+            viewModel.fetchSearchList(searchText: "business")
+        } else {
+            viewModel.fetchSearchList(searchText: searchText)
+            if self.searchList?.count == 0 {
+                
+                self.tableView.isHidden = true
+                self.label.isHidden = false
+            }else{
+                self.tableView.isHidden = false
+                self.label.isHidden = true
             }
         }
-        tableView.reloadData()
     }
 }
 
@@ -121,5 +90,14 @@ extension SearchViewController : UITableViewDelegate, UITableViewDataSource {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    
 }
+
+extension SearchViewController: SearchViewModelDelegate {
+    func searchNewsFetched(_ articles: [Article]) {
+        searchList = articles
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+}
+

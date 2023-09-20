@@ -32,15 +32,12 @@ class MenuListTableViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         return items.count
     }
-
   
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = items[indexPath.row].name
         //cell.textLabel?.textColor = .systemRed
         cell.backgroundColor = .secondarySystemBackground
-        
-
         return cell
     }
     

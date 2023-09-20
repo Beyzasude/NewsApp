@@ -9,22 +9,23 @@ import UIKit
 import Kingfisher
 
 class CategoriesViewController: UIViewController {
-
+    
     @IBOutlet weak var collectionView: UICollectionView!
-
+    
     var viewModel = CategoriesViewModel()
     var categoryNewsList: [Article] = []
     var sideMenu: MenuItem?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.delegate = self
         collectionViewSet()
         prepareNavigationBar()
+        configureNavBarWithLogoImage()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        //showActivityIndicator()
+        navigationController?.navigationBar.prefersLargeTitles = true
         viewModel.fetchCategoryNews(categoryName: sideMenu?.categoryName ?? "business")
     }
     
@@ -37,7 +38,7 @@ class CategoriesViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         title = sideMenu?.name ?? "Business"
     }
-
+    
 }
 
 extension CategoriesViewController: UICollectionViewDataSource {
@@ -75,10 +76,9 @@ extension CategoriesViewController: CategoriesViewModelDelegate {
 }
 
 extension CategoriesViewController: UICollectionViewDelegateFlowLayout {
-    
-//    func collectionView( _ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        return CGSize(width: (collectionView.bounds.size.width - 40) / 2, height: 300)
-//    }
+    //    func collectionView( _ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    //        return CGSize(width: (collectionView.bounds.size.width - 40) / 2, height: 300)
+    //    }
     
     func collectionView( _ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 10
@@ -89,6 +89,6 @@ extension CategoriesViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView( _ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-            return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-        }
+        return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+    }
 }

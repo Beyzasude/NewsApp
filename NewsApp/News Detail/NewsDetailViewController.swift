@@ -9,7 +9,11 @@ import UIKit
 import Kingfisher
 import CoreData
 
-class NewsDetailViewController: UIViewController {
+protocol NewsDetailControllerProtocol : AnyObject {
+    func changeFavButton(isFav: Bool)
+}
+
+class NewsDetailViewController: UIViewController, NewsDetailControllerProtocol {
     let context = appDelegate.persistentContainer.viewContext
     
     @IBOutlet weak var titleLabel: UILabel!
@@ -24,21 +28,18 @@ class NewsDetailViewController: UIViewController {
     var newsResponseModel : Article?
     var dateStringFormat: String?
     let viewModel = NewsDetailViewModel()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel.view = self
         navigationItem.largeTitleDisplayMode = .never
         setData()
-        fetchFavNews()
+        viewModel.fetchFavNews(newsResponseModel: newsResponseModel)
         dateStringFormat = Utilities.publishDateFormat(publishedAt: newsResponseModel?.publishedAt)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        
-    }
-    
     private func setData(){
-       
+        
         titleLabel.text = newsResponseModel?.title ?? "Autoworkers strike begins at Ford, GM, Stellantis plants | TechCrunch"
         sourceLabel.text = newsResponseModel?.source?.name ?? "TechCrunch"
         newsImageView.kf.setImage(with: URL(string: newsResponseModel?.urlToImage ?? "https://techcrunch.com/wp-content/uploads/2023/09/Screen-Shot-2023-09-15-at-4.00.52-pm.png?w=1074"))
@@ -48,24 +49,7 @@ class NewsDetailViewController: UIViewController {
         newsContentLabel.text = newsResponseModel?.content ?? "The United Autoworkers Union (UAW) will go through with threats to strike against the Big Three automakers — Ford, General Motors and Stellantis — after both sides failed to reach a deal. This is the… [+8631 chars]"
     }
     
-    func saveFavNews(){
-        let context = appDelegate.persistentContainer.viewContext
-        let news = FavoriteNewsModel(context: context)
-        
-        news.id = newsResponseModel?.publishedAt
-        news.news_title = newsResponseModel?.title
-        news.news_source = newsResponseModel?.source?.name
-        news.news_content = newsResponseModel?.content
-        news.news_description = newsResponseModel?.description
-        news.news_author = newsResponseModel?.author
-        news.news_url = newsResponseModel?.url
-        news.news_image = newsResponseModel?.urlToImage
-        appDelegate.saveContext()
-        isFav = true
-        changeFavButton()
-    }
-    
-    func changeFavButton(){
+    func changeFavButton(isFav: Bool){
         if isFav == true {
             favoriteButton.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
         }else{
@@ -73,40 +57,11 @@ class NewsDetailViewController: UIViewController {
         }
     }
     
-    private func fetchFavNews(){
-        do {
-            let results = try context.fetch(FavoriteNewsModel.fetchRequest())
-            if let newsId = newsResponseModel?.publishedAt {
-                isFav = results.contains { $0.id == newsId }
-                if isFav {
-                    changeFavButton()
-                }
-            }
-        } catch {
-            print(error.localizedDescription)
-        }
-    }
-    
     @IBAction func shareButtonAct(_ sender: Any) {
     }
     
     @IBAction func addFavoriteButtonAct(_ sender: Any) {
-        if isFav {
-            do {
-                let newsId = newsResponseModel?.publishedAt ?? ""
-                let results = try context.fetch(FavoriteNewsModel.fetchRequest())
-                if let favoriteNews = results.first(where: { $0.id == newsId }) {
-                    context.delete(favoriteNews)
-                    appDelegate.saveContext()
-                    isFav = false
-                    changeFavButton()
-                }
-            } catch {
-                print(error.localizedDescription)
-            }
-        } else {
-            saveFavNews()
-        }
+        viewModel.addFav(newsResponseModel: newsResponseModel)
     }
     
     @IBAction func readMoreButtonAct(_ sender: Any) {

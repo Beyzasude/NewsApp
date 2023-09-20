@@ -10,35 +10,41 @@ import Firebase
 import FirebaseFirestore
 
 protocol RegisterViewModelProtocol {
-    
-    var view : RegisterControllerProtocol? { get set }
-    func saveUserToFirestore(username: String, email: String, password: String, phoneNumber: String, country: String)
-    
+    func registerUser(user: UserModel, completion: @escaping (Result<Void, Error>) -> Void)
 }
 
 class RegisterViewModel: RegisterViewModelProtocol {
+    func registerUser(user: UserModel, completion: @escaping (Result<Void, Error>) -> Void) {
+        Auth.auth().createUser(withEmail: user.email, password: user.password) { [weak self] (authResult, error) in
+            if let error = error {
+                completion(.failure(error))
+            } else {
+                self?.saveUserToFirestore(user: user, completion: completion)
+            }
+        }
+    }
     
-    weak var view: RegisterControllerProtocol?
-    
-    func saveUserToFirestore(username: String, email: String, password: String, phoneNumber: String, country: String) {
+    private func saveUserToFirestore(user: UserModel, completion: @escaping (Result<Void, Error>) -> Void) {
         let db = Firestore.firestore()
-        let userDocument = db.collection("users").document()
-        let currentUsers = Auth.auth().currentUser?.uid
+        let currentUserId = Auth.auth().currentUser?.uid
+        let userDocument = db.collection("users").document(currentUserId!)
+        
         let userData: [String: Any] = [
-            "username": username,
-            "email": email,
-            "password": password,
-            "phoneNumber" : phoneNumber,
-            "country" : country,
-            "userId" : currentUsers!
+            "username": user.username,
+            "email": user.email,
+            "password": user.password,
+            "phoneNumber": user.phoneNumber,
+            "country": user.country,
+            "userId": currentUserId!
         ]
         
         userDocument.setData(userData) { error in
             if let error = error {
-                print("Hata: \(error.localizedDescription)")
+                completion(.failure(error))
             } else {
-                self.view?.succesfulRegisterAlert()
+                completion(.success(()))
             }
         }
     }
 }
+

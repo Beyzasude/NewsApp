@@ -7,53 +7,50 @@
 
 import UIKit
 import FirebaseAuth
+import JGProgressHUD
 
 class LoginViewController: UIViewController {
+    private let spinner = JGProgressHUD(style: .dark)
     
-    private var viewModel = LoginViewModel()
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var signInButton: UIButton!
     
+    private var viewModel = LoginViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        viewModel.viewController = self
+        
     }
-
+    
     @IBAction func signInButtonAct(_ sender: Any) {
+        spinner.show(in: view)
         validationLogin()
+        DispatchQueue.main.async {
+            self.spinner.dismiss()
+        }
     }
     
     @IBAction func signUpButtonAct(_ sender: Any) {
         performSegue(withIdentifier:"register", sender: nil)
     }
     
-    func validationLogin(){
-         if let email = emailTextField.text {
-             if email.isEmpty {
-                 Utilities.showAlert(from: self,withMessage: "Please enter your email")
-             }
-         }
-         if let password = passwordTextField.text {
-             if password.isEmpty {
-                 Utilities.showAlert(from: self,withMessage: "Please enter password")
-             }
-         }
-        // showActivityIndicator()
-        FirebaseAuth.Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!) { (authResult, error) in
-             if error != nil {
-                 //self.hideActivityIndicator()
-                 Utilities.showCustomAlert(from: self, title:"Error", message: error?.localizedDescription ?? "Error")
-             } else{
-                // self.hideActivityIndicator()
-                 //self.performSegue(withIdentifier:"home", sender: nil)
-                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "TabBarViewController")
-                 vc!.modalPresentationStyle = .fullScreen
-                 self.present(vc!, animated: true)
-             }
-             
-         }
-     
-     }
-    
+    func validationLogin() {
+        let email = emailTextField.text
+        let password = passwordTextField.text
+        
+        viewModel.signIn(withEmail: email, password: password) { [weak self] result in
+            switch result {
+            case .success:
+                DispatchQueue.main.async {
+                    let vc = self?.storyboard?.instantiateViewController(withIdentifier: "TabBarViewController")
+                    vc?.modalPresentationStyle = .fullScreen
+                    self?.present(vc!, animated: true)
+                }
+            case .failure(let error):
+                Utilities.showCustomAlert(from: self!, title: "Error", message: error.localizedDescription)
+            }
+        }
+    }
 }
