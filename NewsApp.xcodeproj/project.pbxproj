@@ -57,6 +57,7 @@
 		23537EF92AB99C89004D5E66 /* CategoriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23537EF82AB99C89004D5E66 /* CategoriesViewModel.swift */; };
 		23537EFC2ABAE9E0004D5E66 /* JGProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 23537EFB2ABAE9E0004D5E66 /* JGProgressHUD */; };
 		23537EFE2ABB1E13004D5E66 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23537EFD2ABB1E13004D5E66 /* SearchViewModel.swift */; };
+		237EBD882ABCA5DB00E8D8A4 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237EBD872ABCA5DB00E8D8A4 /* UserModel.swift */; };
 		23AD17C12ABC4809005FB02F /* FavoriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23AD17C02ABC4809005FB02F /* FavoriteViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -100,6 +101,7 @@
 		23537EF62AB8E404004D5E66 /* CategoriesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesCollectionViewCell.swift; sourceTree = "<group>"; };
 		23537EF82AB99C89004D5E66 /* CategoriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewModel.swift; sourceTree = "<group>"; };
 		23537EFD2ABB1E13004D5E66 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		237EBD872ABCA5DB00E8D8A4 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		23AD17C02ABC4809005FB02F /* FavoriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -274,6 +276,7 @@
 			children = (
 				2308997C2AB184C3001332CE /* NewsModel.swift */,
 				2308993A2AACA0FD001332CE /* OnboardingModel.swift */,
+				237EBD872ABCA5DB00E8D8A4 /* UserModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -443,6 +446,7 @@
 				230899442AACC9FF001332CE /* LoginViewController.swift in Sources */,
 				230899892AB32B2C001332CE /* LastestNewsCollectionViewCell.swift in Sources */,
 				230899822AB1BC07001332CE /* HomeViewModel.swift in Sources */,
+				237EBD882ABCA5DB00E8D8A4 /* UserModel.swift in Sources */,
 				230899252AAC79B4001332CE /* ViewController.swift in Sources */,
 				2308993B2AACA0FD001332CE /* OnboardingModel.swift in Sources */,
 				230899482AACD5EF001332CE /* RegisterViewController.swift in Sources */,

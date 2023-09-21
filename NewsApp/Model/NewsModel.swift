@@ -31,10 +31,3 @@ struct Source: Codable {
     var name: String?
 }
 
-struct UserModel {
-    let username: String
-    let email: String
-    let password: String
-    let phoneNumber: String
-    let country: String
-}
