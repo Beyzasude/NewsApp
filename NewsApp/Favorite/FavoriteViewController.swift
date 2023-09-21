@@ -8,14 +8,20 @@
 import UIKit
 import CoreData
 
-class FavoriteViewController: UIViewController {
+protocol FavoriteControllerProtocol : AnyObject {
+    func fetchFavNewsList()
+}
+
+class FavoriteViewController: UIViewController, FavoriteControllerProtocol {
     let context = appDelegate.persistentContainer.viewContext
     
     @IBOutlet weak var tableView: UITableView!
     var favoriteList : [FavoriteNewsModel] = []
+    let viewModel = FavoriteViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel.view = self
         tableViewSet()
         fetchFavNewsList()
         configureNavBarWithLogoImage()
@@ -31,7 +37,7 @@ class FavoriteViewController: UIViewController {
         
     }
     
-    private func fetchFavNewsList(){
+    func fetchFavNewsList(){
         do {
             favoriteList = try context.fetch(FavoriteNewsModel.fetchRequest())
             tableView.reloadData()
@@ -72,6 +78,25 @@ extension FavoriteViewController: UITableViewDelegate, UITableViewDataSource {
         vc.newsResponseModel = article
         vc.modalPresentationStyle = .fullScreen
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .destructive, title: "Sil") { contextualAction, view, bool in
+            let favori = self.favoriteList[indexPath.row]
+            
+            let alert = UIAlertController(title: "Deleting Process", message: "Do you wnat to delete\(favori.news_title!)?", preferredStyle: .alert)
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+            alert.addAction(cancelAction)
+            
+            let acceptAction = UIAlertAction(title: "Yes", style: .destructive) { action in
+                self.viewModel.deleteFavori(id: favori.id!)
+            }
+            alert.addAction(acceptAction)
+            
+            self.present(alert, animated: true)
+        }
+        return UISwipeActionsConfiguration(actions: [deleteAction])
     }
     
 }

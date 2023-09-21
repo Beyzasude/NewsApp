@@ -45,14 +45,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         FirebaseApp.configure()
         language = UserDefaults.standard.string(forKey: "language") ?? "en"
-        
-        if let userInterfaceStyle = UserDefaults.standard.string(forKey: "userInterfaceStyle") {
-            if userInterfaceStyle == "dark" {
-                window?.overrideUserInterfaceStyle = .dark
-            } else {
-                window?.overrideUserInterfaceStyle = .light
-            }
-        }
         return true
     }
 

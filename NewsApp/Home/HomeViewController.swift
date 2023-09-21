@@ -28,6 +28,7 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        spinner.show(in: view)
         viewModel.delegate = self
         configureNavBarWithLogoImage()
         collectionViewsSet()
@@ -36,16 +37,18 @@ class HomeViewController: UIViewController {
         
         menu = SideMenuNavigationController(rootViewController: MenuListTableViewController())
         menu?.leftSide = true
+        menu?.setNavigationBarHidden(true, animated: false)
         SideMenuManager.default.leftMenuNavigationController = menu
         SideMenuManager.default.addPanGestureToPresent(toView: self.view)
+        spinner.dismiss()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        spinner.show(in: view)
+        
         viewModel.fetchTrendNews()
         viewModel.fetchTopHeadlines()
         viewModel.fetchLastestNews()
-        spinner.dismiss()
+        
     }
     
     func collectionViewsSet() {

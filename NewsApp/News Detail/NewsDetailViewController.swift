@@ -35,7 +35,6 @@ class NewsDetailViewController: UIViewController, NewsDetailControllerProtocol {
         navigationItem.largeTitleDisplayMode = .never
         setData()
         viewModel.fetchFavNews(newsResponseModel: newsResponseModel)
-        dateStringFormat = Utilities.publishDateFormat(publishedAt: newsResponseModel?.publishedAt)
     }
     
     private func setData(){
@@ -45,7 +44,7 @@ class NewsDetailViewController: UIViewController, NewsDetailControllerProtocol {
         newsImageView.kf.setImage(with: URL(string: newsResponseModel?.urlToImage ?? "https://techcrunch.com/wp-content/uploads/2023/09/Screen-Shot-2023-09-15-at-4.00.52-pm.png?w=1074"))
         newsImageView.layer.cornerRadius = 5
         authorNameLabel.text = newsResponseModel?.author ?? "Rebecca Bellan"
-        publishTimeLabel.text = dateStringFormat
+        publishTimeLabel.text = Utilities.publishDateFormat(publishedAt: newsResponseModel?.publishedAt)
         newsContentLabel.text = newsResponseModel?.content ?? "The United Autoworkers Union (UAW) will go through with threats to strike against the Big Three automakers — Ford, General Motors and Stellantis — after both sides failed to reach a deal. This is the… [+8631 chars]"
     }
     
@@ -58,6 +57,15 @@ class NewsDetailViewController: UIViewController, NewsDetailControllerProtocol {
     }
     
     @IBAction func shareButtonAct(_ sender: Any) {
+        let textToShare = "Bu haber harika!"
+        let urlToShare = URL(string: newsResponseModel?.url ?? "https://www.example.com")
+
+            var itemsToShare: [Any] = [textToShare]
+            if let url = urlToShare {
+                itemsToShare.append(url)
+            }
+            let activityViewController = UIActivityViewController(activityItems: itemsToShare, applicationActivities: nil)
+            present(activityViewController, animated: true, completion: nil)
     }
     
     @IBAction func addFavoriteButtonAct(_ sender: Any) {

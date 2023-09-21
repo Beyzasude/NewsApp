@@ -57,6 +57,7 @@
 		23537EF92AB99C89004D5E66 /* CategoriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23537EF82AB99C89004D5E66 /* CategoriesViewModel.swift */; };
 		23537EFC2ABAE9E0004D5E66 /* JGProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 23537EFB2ABAE9E0004D5E66 /* JGProgressHUD */; };
 		23537EFE2ABB1E13004D5E66 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23537EFD2ABB1E13004D5E66 /* SearchViewModel.swift */; };
+		23AD17C12ABC4809005FB02F /* FavoriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23AD17C02ABC4809005FB02F /* FavoriteViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -99,6 +100,7 @@
 		23537EF62AB8E404004D5E66 /* CategoriesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesCollectionViewCell.swift; sourceTree = "<group>"; };
 		23537EF82AB99C89004D5E66 /* CategoriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewModel.swift; sourceTree = "<group>"; };
 		23537EFD2ABB1E13004D5E66 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		23AD17C02ABC4809005FB02F /* FavoriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -254,6 +256,7 @@
 			children = (
 				2308999C2AB4BE94001332CE /* Cell */,
 				230899742AAFA3D2001332CE /* FavoriteViewController.swift */,
+				23AD17C02ABC4809005FB02F /* FavoriteViewModel.swift */,
 			);
 			path = Favorite;
 			sourceTree = "<group>";
@@ -462,6 +465,7 @@
 				230899942AB39245001332CE /* SearchTableViewCell.swift in Sources */,
 				230899852AB32AE3001332CE /* TopHeadNewsCollectionViewCell.swift in Sources */,
 				230899652AAE0E3E001332CE /* HomeViewController.swift in Sources */,
+				23AD17C12ABC4809005FB02F /* FavoriteViewModel.swift in Sources */,
 				23537EF72AB8E404004D5E66 /* CategoriesCollectionViewCell.swift in Sources */,
 				23537EEF2AB88B1A004D5E66 /* CategoriesViewController.swift in Sources */,
 				230899912AB379E0001332CE /* NewsDetailViewController.swift in Sources */,

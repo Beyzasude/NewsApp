@@ -48,6 +48,7 @@ class OnboardingViewController: UIViewController {
         
     }
     
+
     @IBAction func nextButtonAct(_ sender: Any) {
         if currentPage == slides.count - 1 {
             UserDefaults.standard.set(showBoard, forKey: "showOnboard")

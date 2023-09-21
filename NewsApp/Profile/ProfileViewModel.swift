@@ -53,10 +53,10 @@ class ProfileViewModel {
     func screenMode(sender: UISegmentedControl) {
         let appDelegate = UIApplication.shared.windows.first
         if sender.selectedSegmentIndex == 1 {
-            appDelegate?.overrideUserInterfaceStyle = .dark
+            appDelegate?.overrideUserInterfaceStyle = .light
         }
         else{
-            appDelegate?.overrideUserInterfaceStyle = .light
+            appDelegate?.overrideUserInterfaceStyle = .dark
         }
     }
     

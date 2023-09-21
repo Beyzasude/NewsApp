@@ -814,7 +814,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.29999999999999999" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yRz-YB-cMx">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.45000000000000001" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yRz-YB-cMx">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="255"/>
                                 <color key="tintColor" systemColor="systemRedColor"/>
                                 <constraints>
@@ -822,21 +822,22 @@
                                 </constraints>
                                 <imageReference key="image" image="login" symbolScale="default" variableValue="1"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ghu-wK-Ekg">
-                                <rect key="frame" x="146" y="309" width="101" height="24"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="          " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ghu-wK-Ekg">
+                                <rect key="frame" x="174.33333333333334" y="309" width="44.333333333333343" height="24"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Country" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kc2-nH-bvn">
-                                <rect key="frame" x="169" y="343" width="55" height="18"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="        " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kc2-nH-bvn">
+                                <rect key="frame" x="180.66666666666666" y="343" width="32" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="QVV-tA-Jea">
-                                <rect key="frame" x="131.66666666666666" y="174" width="129.99999999999997" height="130"/>
-                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="QVV-tA-Jea">
+                                <rect key="frame" x="131.66666666666666" y="175" width="129.99999999999997" height="128.66666666666669"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="tintColor" systemColor="systemRedColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="130" id="DDS-6z-R5R"/>
                                     <constraint firstAttribute="height" constant="130" id="vwb-lv-baM"/>
@@ -852,7 +853,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="test@gmail.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="btu-Q1-gVr">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="       " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="btu-Q1-gVr">
                                         <rect key="frame" x="62" y="15" width="291" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -875,7 +876,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="444 44 44" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9cr-3a-76F">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="      " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9cr-3a-76F">
                                         <rect key="frame" x="69" y="15" width="284" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -929,8 +930,8 @@
                                         <rect key="frame" x="176" y="6" width="129" height="32"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <segments>
-                                            <segment title="Light"/>
                                             <segment title="Dark"/>
+                                            <segment title="Light"/>
                                         </segments>
                                         <connections>
                                             <action selector="darkLigtModeSegmentAct:" destination="U6M-jG-sZH" eventType="valueChanged" id="h9j-pP-K3N"/>
@@ -942,13 +943,6 @@
                                     <constraint firstAttribute="height" constant="45" id="MFN-Pr-2d1"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ve2-HQ-UgJ">
-                                <rect key="frame" x="247" y="304" width="46" height="35"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="pencil" catalog="system">
-                                    <color key="baseForegroundColor" systemColor="labelColor"/>
-                                </buttonConfiguration>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hev-aX-9yR">
                                 <rect key="frame" x="121.66666666666669" y="626" width="150" height="50"/>
                                 <constraints>
@@ -960,7 +954,6 @@
                                 <buttonConfiguration key="configuration" style="plain" title="Logout">
                                     <backgroundConfiguration key="background" cornerRadius="10">
                                         <color key="backgroundColor" systemColor="systemRedColor"/>
-                                        <color key="strokeColor" systemColor="systemRedColor"/>
                                     </backgroundConfiguration>
                                     <fontDescription key="titleFontDescription" type="boldSystem" pointSize="17"/>
                                 </buttonConfiguration>
@@ -980,8 +973,6 @@
                             <constraint firstItem="h7y-Yl-XUu" firstAttribute="leading" secondItem="IZN-mb-W8O" secondAttribute="leading" constant="40" id="6lm-hz-Emy"/>
                             <constraint firstItem="IZN-mb-W8O" firstAttribute="trailing" secondItem="2q7-yU-dww" secondAttribute="trailing" constant="40" id="79e-3D-A6t"/>
                             <constraint firstItem="IZN-mb-W8O" firstAttribute="trailing" secondItem="h7y-Yl-XUu" secondAttribute="trailing" constant="40" id="8dX-mT-TK3"/>
-                            <constraint firstItem="ve2-HQ-UgJ" firstAttribute="leading" secondItem="Ghu-wK-Ekg" secondAttribute="trailing" id="DGQ-s3-EQI"/>
-                            <constraint firstItem="ve2-HQ-UgJ" firstAttribute="top" secondItem="QVV-tA-Jea" secondAttribute="bottom" id="DYg-oh-9xH"/>
                             <constraint firstItem="IZN-mb-W8O" firstAttribute="trailing" secondItem="20M-It-WTl" secondAttribute="trailing" constant="40" id="JM4-C7-h1g"/>
                             <constraint firstItem="Ghu-wK-Ekg" firstAttribute="top" secondItem="QVV-tA-Jea" secondAttribute="bottom" constant="5" id="NRz-nu-Ooh"/>
                             <constraint firstItem="hev-aX-9yR" firstAttribute="top" secondItem="h7y-Yl-XUu" secondAttribute="bottom" constant="40" id="Na9-de-7SG"/>
@@ -1074,7 +1065,7 @@
                                 </cells>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nnw-ao-uWP">
-                                <rect key="frame" x="121.66666666666669" y="738" width="150" height="50"/>
+                                <rect key="frame" x="121.66666666666669" y="689" width="150" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="ovX-pX-3dC"/>
                                     <constraint firstAttribute="height" constant="50" id="y7P-LL-HPu"/>
@@ -1108,6 +1099,8 @@
                             <constraint firstItem="8uJ-9z-WJL" firstAttribute="top" secondItem="WEp-0f-Xk2" secondAttribute="top" id="tc0-tS-QcF"/>
                         </constraints>
                     </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="collectionView" destination="8uJ-9z-WJL" id="drA-M8-zhS"/>
                         <outlet property="nextButton" destination="Nnw-ao-uWP" id="zu9-WP-gVW"/>
@@ -1531,9 +1524,6 @@
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" systemColor="systemRedColor"/>
-                        <textAttributes key="titleTextAttributes">
-                            <color key="textColor" systemColor="systemRedColor"/>
-                        </textAttributes>
                         <textAttributes key="largeTitleTextAttributes">
                             <color key="textColor" systemColor="systemRedColor"/>
                         </textAttributes>
@@ -1600,12 +1590,9 @@
         <image name="login" width="736" height="981"/>
         <image name="logo" width="512" height="512"/>
         <image name="magnifyingglass" catalog="system" width="128" height="117"/>
-        <image name="pencil" catalog="system" width="128" height="113"/>
+        <image name="person.circle.fill" catalog="system" width="128" height="123"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
-        <systemColor name="labelColor">
-            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="secondarySystemBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

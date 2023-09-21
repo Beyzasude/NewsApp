@@ -8,9 +8,10 @@
 import UIKit
 import Firebase
 import FirebaseAuth
+import JGProgressHUD
 
 class RegisterViewController: UIViewController{
-    
+    private let spinner = JGProgressHUD(style: .dark)
     var viewModel = RegisterViewModel()
     
     @IBOutlet weak var fullNameTextField: UITextField!
@@ -30,7 +31,7 @@ class RegisterViewController: UIViewController{
     
     
     @IBAction func signUpButtonAct(_ sender: Any) {
-        
+        spinner.show(in: view)
         guard let email = emailTextField.text,
               let password = passwordTextField.text,
               let fullName = fullNameTextField.text,
@@ -51,6 +52,7 @@ class RegisterViewController: UIViewController{
                 Utilities.showCustomAlert(from: self!, title: "Error", message: error.localizedDescription)
             }
         }
+        spinner.dismiss()
     }
     
     
