@@ -1,6 +1,16 @@
 # NewsApp
 Up School &amp; Akbank iOS Bootcamp Capstone Project
 
+Projede Kullandıklarım:
+- MVVM Mimarisi
+- UITableView
+- UICollectionView
+- UITabbarController
+- Side Menu
+- Firebase
+- Alamofire
+- News API
+
 <img width="446" alt="Ekran Resmi 2023-09-26 22 41 00" src="https://github.com/Beyzasude/NewsApp/assets/60144528/c3c741e9-173c-4645-bbad-16ddd291999d">
 
 
