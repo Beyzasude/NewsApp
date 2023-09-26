@@ -13,7 +13,7 @@ Up School &amp; Akbank iOS Bootcamp Capstone Project
 <br/><img width="456" alt="Ekran Resmi 2023-09-26 22 41 43" src="https://github.com/Beyzasude/NewsApp/assets/60144528/8d29254e-b91d-45ec-b440-84c82c8936ee">
 
 
-<br/><img width="456" alt="Ekran Resmi 2023-09-26 22 41 53" src="https://github.com/Beyzasude/NewsApp/assets/60144528/20f6e4a5-c97a-4fa0-8d75-c2ce9e2b7043">
+<br/>![Uploading Ekran Resmi 2023-09-26 23.33.08.png…]()
 
 
 <br/><img width="249" alt="Ekran Resmi 2023-09-26 22 42 09" src="https://github.com/Beyzasude/NewsApp/assets/60144528/f6f62200-4a84-4929-9ccf-eff7fb710e1d">
