@@ -27,3 +27,7 @@ Projede Kullandıklarım:
 
 
 <img width="249" alt="Ekran Resmi 2023-09-26 22 42 09" src="https://github.com/Beyzasude/NewsApp/assets/60144528/f6f62200-4a84-4929-9ccf-eff7fb710e1d">
+
+## General Information about Project
+
+#### * UITableView <br/> * UICollectionView <br/> * UITabbarController <br/> * UINavigationController
